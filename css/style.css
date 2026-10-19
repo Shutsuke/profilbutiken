@@ -425,3 +425,91 @@ input[type=range]{width:100%;height:44px;accent-color:var(--yellow);cursor:point
 .nextup{border-top:3px solid var(--ink);padding:clamp(36px,5vw,56px) 0}
 .nextup__in{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
 .nextup p{font-size:clamp(19px,2.4vw,27px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;max-width:22ch}
+
+/* ==========================================================================
+   Förbättringar – roadmap i prioritetsordning
+   ========================================================================== */
+
+.quickwin{border:3px solid var(--ink);background:var(--yellow);padding:26px 28px;margin-top:8px}
+.quickwin h2{font-size:clamp(20px,2.4vw,27px);margin-bottom:16px}
+.quickwin ol{counter-reset:q;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.quickwin li{counter-increment:q;display:flex;flex-direction:column;gap:6px;border-top:3px solid var(--ink);padding-top:12px}
+.quickwin li::before{content:counter(q,decimal-leading-zero);font-size:13px;font-weight:900;letter-spacing:.08em}
+.quickwin strong{font-size:16px;font-weight:900;letter-spacing:-.01em;line-height:1.2}
+.quickwin small{font-size:13px;font-weight:600}
+@media (max-width:900px){.quickwin ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.quickwin ol{grid-template-columns:1fr}}
+
+.phase{margin-top:clamp(40px,5vw,64px)}
+.phase__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;border-bottom:3px solid var(--ink);padding-bottom:14px;margin-bottom:4px}
+.phase__head h2{font-size:clamp(24px,3.2vw,38px)}
+.phase__when{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink-deep)}
+.phase__why{width:100%;font-size:16px;color:var(--muted);margin-top:6px}
+
+.road{display:flex;flex-direction:column}
+.road li{display:grid;grid-template-columns:58px 1fr 190px;gap:8px 22px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
+.road li:last-child{border-bottom:0}
+.road__num{font-size:28px;font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--pink)}
+.road__body{min-width:0;display:flex;flex-direction:column;gap:10px}
+.road__body h3{font-size:19px;letter-spacing:-.01em;text-transform:none}
+.road__body p{font-size:16px;color:var(--muted)}
+.road__now{border-left:4px solid var(--yellow);padding-left:14px;font-size:15px!important}
+.road__now b{color:var(--ink);font-weight:800}
+.road__meta{display:flex;flex-direction:column;gap:7px;align-items:flex-start}
+.road__meta span{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;white-space:nowrap}
+.eff{border:2px solid var(--ink)}
+.eff--s{background:var(--ink);color:#fff}
+.imp{background:var(--pink);color:var(--ink)}
+.imp--mid{background:transparent;color:var(--pink-deep);border:2px solid var(--pink)}
+.road__who{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:0;text-transform:none;padding:0!important}
+@media (max-width:860px){
+  .road li{grid-template-columns:44px 1fr}
+  .road__meta{grid-column:2;flex-direction:row;flex-wrap:wrap}
+}
+
+/* ==========================================================================
+   Utskrift – används för PDF-versionen av forbattringar.html
+   ========================================================================== */
+@media print{
+  @page{margin:16mm 14mm}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  html{scroll-behavior:auto}
+  body{font-size:11pt}
+
+  /* Navigering och uppmaningar hör inte hemma i ett dokument */
+  /* Allt som är en länk blir en död knapp i en PDF */
+  .skip,.nav,.nav-toggle,.crumbs,.nextup,.footer__nav,.header .btn,
+  .route .btn,.topbar__in span:last-child{display:none!important}
+  .header{position:static;border-bottom:2px solid var(--ink);padding:0}
+  .header__in{padding-top:8px;padding-bottom:8px}
+  .brand img{width:150px}
+  .topbar{background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}
+  .topbar a{color:var(--ink)}
+
+  .subhero__in{padding-top:18mm;padding-bottom:14mm}
+  h1{font-size:30pt}
+  h2{font-size:19pt}
+  .road__body h3{font-size:13pt}
+  .lead{font-size:12pt}
+  .sect{padding:8mm 0}
+  .wrap{max-width:none;padding:0}
+
+  /* Inget får delas mitt itu */
+  .road li,.quickwin,.quickwin li,.route,.phase__head,.factbox,.terms > div{break-inside:avoid}
+  /* Varje fas börjar på egen sida – läser bättre som dokument och
+     undviker att en halv punkt blir kvar i botten på föregående sida */
+  .phase{break-before:page}
+  .phase__head{break-after:avoid}
+  .quickwin{break-after:page}
+  .road li{padding:5mm 0}
+  .sect--ink{break-before:page}
+
+  .footer{background:#fff;color:var(--ink);border-top:2px solid var(--ink);break-inside:avoid}
+  .footer__in,.footer__brand,.footer__meta{break-inside:avoid}
+  .footer__in{padding-top:6mm;padding-bottom:3mm}
+  .footer__brand img{background:var(--ink);padding:6px 8px;width:150px}
+  .footer__meta{color:var(--muted);border-top:1px solid var(--line)}
+
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:8pt;font-weight:400;color:var(--muted);word-break:break-all}
+  .btn::after,.brand a::after{content:""!important}
+}
