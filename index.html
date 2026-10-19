@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profilprodukter med egen logga – Profilbutiken i Luleå</title>
+<meta name="description" content="Ladda upp er logotyp och se den monterad på drygt 10 000 profilprodukter. Designa själv, godkänn korrektur på minuter. Egen webbshop för företag. Profilbutiken i Luleå sedan 1997.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="icon" href="assets/logo-pb.svg">
+</head>
+<body>
+
+<a class="skip" href="#main">Hoppa till innehåll</a>
+
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span>Profilprodukter med er logga – hela Sverige, Norden och Europa</span>
+    <span>Växel <a href="tel:+46920280280">0920-280 280</a></span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="brand" href="#top" aria-label="Profilbutiken, till startsidan">
+      <img src="assets/logo-pb.png" alt="Profilbutiken" width="600" height="107">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#provtryck">Prova loggan</a>
+      <a href="start-pro.html">Start &amp; PRO</a>
+      <a href="fulmossan.html">Fulmössan</a>
+      <a href="om.html">Om oss</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a class="btn btn--ink" href="https://profilbutiken.se/">Till webbshopen</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap hero__in">
+    <p class="eyebrow">Profilbutiken i Luleå · sedan 1997</p>
+    <h1>Se din logga<br>på tiotusen saker.</h1>
+    <p class="lead">Ladda upp er logotyp och se den monterad direkt. Välj produkt, designa själv och godkänn korrekturet – inom loppet av några minuter, utan mellanhänder.</p>
+    <div class="hero__cta">
+      <a class="btn btn--ink btn--lg" href="#provtryck">Prova med er logga</a>
+      <a class="btn btn--outline btn--lg" href="#webbshop">Egen webbshop för företaget</a>
+    </div>
+    <ul class="checks">
+      <li>Drygt 10 000 produkter</li>
+      <li>Leverans i hela Norden</li>
+      <li>Egen kontaktperson på köpet</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== SIGNATURELEMENT: PROVTRYCKAREN ===== -->
+<section class="mock" id="provtryck">
+  <div class="wrap">
+    <div class="mock__panel">
+
+      <div class="mock__head">
+        <p class="eyebrow eyebrow--pink">Provtryckaren</p>
+        <h2>Lägg din logga på produkten.</h2>
+        <p class="mock__intro">Samma sak som plattformen gör på riktigt – fast här högst upp på sidan. Ladda upp en fil eller välj en exempellogga, byt produkt och tryckfärg och se hur det blir.</p>
+      </div>
+
+      <div class="mock__grid">
+
+        <!-- Kontroller -->
+        <div class="mock__controls">
+
+          <div class="ctl">
+            <span class="ctl__label" id="lbl-logo">1. Din logga</span>
+            <div class="drop" aria-labelledby="lbl-logo">
+              <label class="btn btn--pink btn--block" for="logofile">Ladda upp logotyp</label>
+              <input type="file" id="logofile" accept="image/png,image/jpeg,image/svg+xml,image/gif,image/webp">
+              <p class="drop__hint">PNG, JPG eller SVG. Filen lämnar aldrig din webbläsare – det här är en skiss.</p>
+              <div class="drop__examples">
+                <span>eller testa med:</span>
+                <button type="button" class="chip" data-ex="bygg">Bygg</button>
+                <button type="button" class="chip" data-ex="akeri">Åkeri</button>
+                <button type="button" class="chip" data-ex="teknik">Teknik</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctl">
+            <span class="ctl__label" id="lbl-prod">2. Produkt</span>
+            <div class="segs" role="group" aria-labelledby="lbl-prod">
+              <button type="button" class="seg is-on" data-prod="vast">Väst</button>
+              <button type="button" class="seg" data-prod="mossa">Fulmössa</button>
+              <button type="button" class="seg" data-prod="mugg">Vikkåsa</button>
+            </div>
+          </div>
+
+          <div class="ctl">
+            <span class="ctl__label" id="lbl-farg">3. Tryckfärg</span>
+            <div class="segs" role="group" aria-labelledby="lbl-farg">
+              <button type="button" class="seg is-on" data-ink="as-is">Flerfärg</button>
+              <button type="button" class="seg" data-ink="white">Vitt</button>
+              <button type="button" class="seg" data-ink="black">Svart</button>
+            </div>
+            <p class="ctl__hint">Enfärgstryck gör om loggan till en siluett i en färg. Ofta billigast – och på mörka produkter är det vitt som syns.</p>
+          </div>
+
+          <div class="ctl">
+            <label class="ctl__label" for="size">4. Tryckstorlek <output id="sizeOut">100&nbsp;%</output></label>
+            <input type="range" id="size" min="50" max="150" value="100" step="5">
+          </div>
+
+          <p class="mock__note">Fingervisning, inte ett korrektur. Riktiga tryckytor, mått och färger väljs i webbshopen.</p>
+
+        </div>
+
+        <!-- Förhandsvisning -->
+        <figure class="mock__stage">
+          <div class="stage" id="stage">
+            <img id="stageImg" src="assets/vast.jpg" alt="Petrolfärgad quiltad väst, sedd bakifrån" width="900" height="900">
+            <div class="stage__print" id="print" aria-hidden="true"></div>
+          </div>
+          <figcaption id="stageCap">IQONIQ Meru-väst · tryck på ryggen</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIFFROR ===== -->
+<section class="stats">
+  <div class="wrap">
+    <ul class="stats__grid">
+      <li><strong>1997</strong><span>Året vi började</span><p>Profilreklam från Luleå, med egen designavdelning sedan tidigt 2000-tal.</p></li>
+      <li><strong>10&nbsp;000</strong><span>Produkter</span><p>Drygt tiotusen artiklar i databasen – allt går att få med er logga.</p></li>
+      <li><strong>2014</strong><span>Först i branschen</span><p>Vi släppte Profilbutiken.se och var först med automatisk e-handel för profilreklam.</p></li>
+      <li><strong>20</strong><span>Varumärken</span><p>Teejays, Nimbus, Pro Job, XD Connects, Matterhorn, Texstar och ett femtontal till.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== SÅ GÅR DET TILL ===== -->
+<section class="steps" id="sa-funkar-det">
+  <div class="wrap steps__in">
+    <div class="steps__text">
+      <p class="eyebrow eyebrow--pink">Så går det till</p>
+      <h2>Fyra steg, inga mellanhänder.</h2>
+      <p>Den vanliga vägen till en kartong profilkläder går via en säljare, ett mejl, ett korrektur, ett svar och en vecka. Hos oss gör ni det själva – och ringer bara när ni vill.</p>
+      <a class="btn btn--pink" href="https://profilbutiken.se/om/ladda-upp-din-logo">Läs om filformat och logotyper</a>
+    </div>
+    <ol class="steps__list">
+      <li><strong>Ladda upp logotypen</strong><span>Helst vektor – AI, EPS eller CDR. PNG och JPG fungerar också. Den sparas i ert eget logobibliotek.</span></li>
+      <li><strong>Välj produkt och designa</strong><span>Byt logotyp, ändra storlek, flytta eller vrid. Priset uppdateras medan ni väljer tryckytor.</span></li>
+      <li><strong>Godkänn korrekturet</strong><span>Ni ser exakt vad som trycks och godkänner själva. Hela vägen från produktsökning till godkänt tar några minuter.</span></li>
+      <li><strong>Vi producerar och levererar</strong><span>Till en adress eller till era kontor runt om i Norden. Paket upp till 32 kg kostar 269 kr, pall 1 990 kr.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== SORTIMENT ===== -->
+<section class="assortment" id="sortiment">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <div>
+        <p class="eyebrow eyebrow--pink">Sortiment</p>
+        <h2>Åtta ingångar i stället för sjuttio.</h2>
+      </div>
+      <p>Hela sortimentet ligger i webbshopen. Det här är de vanligaste vägarna in.</p>
+    </div>
+    <ul class="cats">
+      <li><a href="https://profilbutiken.se/kategorier/profilklader-2"><span>Profilkläder</span><small>T-shirts, pikéer, skjortor, hoodies</small></a></li>
+      <li><a href="https://profilbutiken.se/kategorier/mossor-kepsar-1"><span>Mössor &amp; kepsar</span><small>Mössor, kepsar, multiheadwear</small></a></li>
+      <li><a href="https://profilbutiken.se/kategorier/reklampennor-profilpennor"><span>Reklampennor</span><small>Kulspets, blyerts, exklusiva pennor</small></a></li>
+      <li><a href="https://profilbutiken.se/kategorier/vaskor-pasar"><span>Väskor &amp; påsar</span><small>Ryggsäckar, gymväskor, tygkassar</small></a></li>
+      <li><a href="https://profilbutiken.se/kategorier/profilreklam"><span>Profilreklam</span><small>Muggar, termosar, paraplyer, reflex</small></a></li>
+      <li><a href="https://profilbutiken.se/kategorier/massa-event"><span>Mässa &amp; event</span><small>Beachflaggor, rollups, tält, vepor</small></a></li>
+      <li><a href="https://profilbutiken.se/kategorier/gavor-1"><span>Gåvor</span><small>Julklappar, sommargåvor, gåvokort</small></a></li>
+      <li><a href="https://profilbutiken.se/alla"><span>Arbetskläder</span><small>Yrkeskläder, reflexvästar, säkerhet</small></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== EGEN WEBBSHOP: START / PRO ===== -->
+<section class="shops" id="webbshop">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow--yellow">Egen webbshop</p>
+      <h2>Start eller PRO.</h2>
+      <p>Vi är fullserviceleverantör till flera stora företag där vi erbjuder unika lösningar, men vi tar även hand om företag som inte behöver stora volymer.</p>
+    </div>
+    <div class="shops__grid">
+
+      <article class="shop">
+        <header><span class="tag">Profilbutiken Start</span></header>
+        <h3>För er som vill prova i mindre skala.</h3>
+        <p>On demand-lösning där ni beställer reklamkläder och profilprodukter med er logga, precis som vanligt – men i en egen shop.</p>
+        <ul class="feat">
+          <li><strong>Bassortiment</strong> – access till samtliga produkter i databasen</li>
+          <li><strong>Designverktyg</strong> – byt logotyp, ändra storlek, flytta eller vrid</li>
+          <li><strong>Logobibliotek</strong> – ert eget bibliotek för loggor och motiv</li>
+          <li><strong>Urval</strong> – på kategori, pris, produktfärg och fritext</li>
+          <li><strong>Inköpshistorik</strong> – designbilder, tryckmått, pris och repeatbeställning</li>
+        </ul>
+        <a class="btn btn--ink btn--block" href="start-pro.html">Allt som ingår i Start</a>
+      </article>
+
+      <article class="shop shop--pro">
+        <header><span class="tag tag--pink">Profilbutiken PRO</span></header>
+        <h3>För er med flera kontor, orter eller länder.</h3>
+        <p>Allt i Start – plus lager, logistik och styrning. Den lösning vi bygger för kunder som har en organisation att hålla ihop.</p>
+        <ul class="feat">
+          <li><strong>Lager &amp; distribution</strong> – färdigloggade produkter för snabba avrop</li>
+          <li><strong>Färgstyrning</strong> – ni bestämmer vilka produktfärger organisationen ser</li>
+          <li><strong>Designservice</strong> – fördesignade produkter i er egen shop</li>
+          <li><strong>Sambeställning</strong> – era enheter köper tillsammans till volympris</li>
+          <li><strong>Marknadsuppdelning</strong> – enheter, orter, regioner och länder</li>
+          <li><strong>Behörighetsnivåer</strong> – från enskild användare till masteranvändare</li>
+          <li><strong>Språk och valuta</strong> – svenska och engelska, fritt valutaval per användare</li>
+        </ul>
+        <a class="btn btn--pink btn--block" href="start-pro.html">Allt som ingår i PRO</a>
+      </article>
+
+    </div>
+    <p class="shops__foot">Osäker på vilken som passar? Ring <a href="tel:+46705169086">070-516 90 86</a> så reder vi ut det på fem minuter.</p>
+  </div>
+</section>
+
+<!-- ===== FULMÖSSAN ===== -->
+<section class="ful" id="fulmossan">
+  <div class="wrap ful__in">
+    <div class="ful__text">
+      <p class="eyebrow eyebrow--pink">Vår egen</p>
+      <h2>Fulmössan.</h2>
+      <p class="ful__lead">Vinterfodrad mössa med öronlappar och böjbar skärm. Fleece som innerfoder och bävernylon på utsidan för att hålla dig torr om huvudet, undan snö och regn. Justerbar storlek som passar de flesta vuxna.</p>
+      <dl class="specs">
+        <div><dt>Med ert tryck</dt><dd>från 86 kr/st exkl. moms, minst 15 st</dd></div>
+        <div><dt>Utan tryck, till dig själv</dt><dd>199 kr inkl. moms på fulmossa.se</dd></div>
+        <div><dt>Färger</dt><dd>Tio stycken, från svart till guld</dd></div>
+        <div><dt>Omkrets</dt><dd>Ca 61 cm</dd></div>
+      </dl>
+      <div class="ful__cta">
+        <a class="btn btn--yellow" href="fulmossan.html">Allt om Fulmössan</a>
+        <a class="btn btn--outline-light" href="https://fulmossa.se/kategori/fulmossa">Till fulmossa.se</a>
+      </div>
+    </div>
+    <img class="ful__img" src="assets/fulmossa.jpg" alt="Svart Fulmössa med öronlappar och böjbar skärm" width="900" height="900" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== VARUMÄRKEN ===== -->
+<section class="brands">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <div>
+        <p class="eyebrow eyebrow--pink">I sortimentet</p>
+        <h2>Märken vi jobbar med.</h2>
+      </div>
+      <p>Leverantörer och samarbetspartners som finns i databasen.</p>
+    </div>
+    <ul class="brands__list">
+      <li>Berkeley</li><li>Borgstena of Sweden</li><li>Candab</li><li>Carlobolaget</li>
+      <li>CTWO</li><li>Fruit</li><li>Headwear</li><li>Matterhorn</li><li>Nimbus</li>
+      <li>PF Concept</li><li>Pro Job</li><li>PTS</li><li>Quickbutton</li><li>Sandryds</li>
+      <li>Teejays</li><li>Texet</li><li>Texstar</li><li>Vinga</li><li>XD Connects</li><li>Zebro</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== OM OSS + TEAM ===== -->
+<section class="about" id="om">
+  <div class="wrap">
+    <div class="about__in">
+      <div class="about__text">
+        <p class="eyebrow eyebrow--pink">Om Profilbutiken</p>
+        <h2>Luleå sedan 1997.</h2>
+        <p>Vi gillar utveckling och har sedan starten präglats av en innovativ utvecklingsanda. Redan 1999 etablerade vi de första kontakterna för fabriksproduktion och direktimport från Asien, som en av de första svenska återförsäljarna i branschen. I början på 2000-talet kom nästa grundbult – en egen designavdelning.</p>
+        <p>Kring 2005 var vi en etablerad fullserviceleverantör med ett väl utbyggt lager- och distributionssystem för kunder i hela Sverige, Norden och viss mån Europa. Och det var ungefär då idén till enkel, smart e-handel föddes. I augusti 2014 släppte vi Profilbutiken.se och var först i branschen med automatisk e-handel.</p>
+        <p class="pull">Idag är vi enda branschplattform där kund, på egen hand, kan genomföra sin produkt&shy;sondering, design samt godkänna korrektur – inom loppet av några minuter.</p>
+      </div>
+      <div class="about__aside">
+        <h3>Er egen personal shopper</h3>
+        <p>En av vår tids största utmaningar är att hinna med ”allt”. Därför har ni alltid stöd av en egen kontaktperson som ni ringer eller mejlar så fort ni behöver hjälp med annat än snabba on demand-köp.</p>
+      </div>
+    </div>
+
+    <h3 class="team__head">Hela gänget, med direktnummer. <a href="om.html" style="font-size:14px;font-weight:700;text-transform:none;letter-spacing:0;color:var(--pink-deep)">Mer om oss &rarr;</a></h3>
+    <ul class="team">
+      <li><strong>Caroline Wallgren</strong><span>VD</span><a href="tel:+46724507927">072-450 79 27</a><a href="mailto:caroline@profilbutiken.se">caroline@profilbutiken.se</a></li>
+      <li><strong>Matts Fåhraeus</strong><span>Projektledare</span><a href="tel:+46705169086">070-516 90 86</a><a href="mailto:matts@profilbutiken.se">matts@profilbutiken.se</a></li>
+      <li><strong>Jörgen Johansson</strong><span>Projektledare</span><a href="tel:+46706580284">070-658 02 84</a><a href="mailto:jorgen@profilbutiken.se">jorgen@profilbutiken.se</a></li>
+      <li><strong>Mats Johnson</strong><span>Projektledare</span><a href="tel:+46705559111">070-555 91 11</a><a href="mailto:mats@profilbutiken.se">mats@profilbutiken.se</a></li>
+      <li><strong>Tomas Taavo</strong><span>Projektledare</span><a href="tel:+46706224093">070-622 40 93</a><a href="mailto:tomas@profilbutiken.se">tomas@profilbutiken.se</a></li>
+      <li><strong>Jörgen Lindh</strong><span>Designer</span><a href="tel:+46920280295">0920-280 295</a><a href="mailto:lindh@profilbutiken.se">lindh@profilbutiken.se</a></li>
+      <li><strong>Viggo Rasch</strong><span>Lager &amp; logistik</span><a href="tel:+46920280279">0920-280 279</a><a href="mailto:viggo@profilbutiken.se">viggo@profilbutiken.se</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== KONTAKT ===== -->
+<section class="contact" id="kontakt">
+  <div class="wrap contact__in">
+    <div class="contact__text">
+      <p class="eyebrow eyebrow--yellow">Kontakt</p>
+      <h2>Hör av er.</h2>
+      <p>Ska ni bygga en egen webbshop, behöver ni hjälp med en logotypfil, eller vill ni bara veta vad fyrtio mössor kostar? Ring växeln eller skriv här.</p>
+      <a class="contact__phone" href="tel:+46920280280">0920-280 280</a>
+      <div class="contact__addr">
+        <div><strong>Mejl</strong>info@profilbutiken.se<br>ekonomi@profilbutiken.se</div>
+        <div><strong>Adress</strong>Profilbutiken i Luleå AB<br>Handelsvägen 19<br>973 45 Luleå</div>
+      </div>
+    </div>
+
+    <form class="contact__form" action="https://formspree.io/f/XXXXXXXX" method="post">
+      <div class="form__row">
+        <div class="field">
+          <label for="namn">Namn</label>
+          <input id="namn" name="namn" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="foretag">Företag</label>
+          <input id="foretag" name="foretag" type="text" autocomplete="organization" required>
+        </div>
+      </div>
+      <div class="form__row">
+        <div class="field">
+          <label for="epost">E-post</label>
+          <input id="epost" name="epost" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="telefon">Telefon</label>
+          <input id="telefon" name="telefon" type="tel" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <label for="arende">Vad gäller det?</label>
+        <select id="arende" name="arende">
+          <option>En engångsbeställning</option>
+          <option>Egen webbshop – Start</option>
+          <option>Egen webbshop – PRO</option>
+          <option>Hjälp med logotypfil</option>
+          <option>Mässa eller event</option>
+          <option>Annat</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="meddelande">Meddelande</label>
+        <textarea id="meddelande" name="meddelande" rows="4"></textarea>
+      </div>
+      <button class="btn btn--yellow btn--block" type="submit">Skicka</button>
+      <small>Vi återkommer så snart vi kan. Formuläret i den här skissen är inte kopplat än.</small>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <div class="footer__brand">
+      <img src="assets/logo-pb.svg" alt="Profilbutiken" width="493" height="88">
+      <p>Profilbutiken i Luleå AB<br>Handelsvägen 19, 973 45 Luleå<br>Org.nr 556535-7075</p>
+    </div>
+    <nav class="footer__nav" aria-label="Sidfot">
+      <div>
+        <strong>Sidor</strong>
+        <a href="start-pro.html">Start &amp; PRO</a>
+        <a href="om.html">Om oss</a>
+        <a href="fulmossan.html">Fulmössan</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="villkor.html">Köpvillkor</a>
+      </div>
+      <div>
+        <strong>Hos Profilbutiken</strong>
+        <a href="https://profilbutiken.se/">Webbshopen</a>
+        <a href="https://profilbutiken.se/om/ladda-upp-din-logo">Ladda upp din logo</a>
+        <a href="https://profilbutiken.se/om/varumarken">Varumärken</a>
+        <a href="https://profilbutiken.se/om/inspiration">Inspiration</a>
+      </div>
+      <div>
+        <strong>Ansvar</strong>
+        <a href="https://profilbutiken.se/om/ansvar-och-kvalitetspolicy">Ansvar &amp; kvalitet</a>
+        <a href="https://profilbutiken.se/om/miljopolicy-och-mal">Miljöpolicy och mål</a>
+        <a href="https://profilbutiken.se/om/code-of-conduct">Code of Conduct</a>
+        <a href="https://profilbutiken.se/om/cookie-information">Cookie-information</a>
+      </div>
+      <div>
+        <strong>Följ oss</strong>
+        <a href="https://www.instagram.com/profilbutiken.se/">Instagram</a>
+        <a href="https://www.facebook.com/profilbutiken/">Facebook</a>
+        <a href="https://fulmossa.se/kategori/fulmossa">fulmossa.se</a>
+      </div>
+      <div>
+        <strong>Skissen</strong>
+        <a href="oversikt.html">Översikt &amp; flöde</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer__meta">
+    <span>Det här är en skiss, inte Profilbutikens riktiga sajt. Produktbilder: Profilbutiken.</span>
+    <span>Växel 0920-280 280 · info@profilbutiken.se</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Profilbutiken i Luleå AB",
+  "alternateName": "Profilbutiken",
+  "url": "https://profilbutiken.se/",
+  "logo": "https://profilbutiken.se/img/pb-header-logo.png",
+  "description": "Profilprodukter och presentreklam med kundens logotyp. Drygt 10 000 produkter, egen webbshopslösning för företag.",
+  "foundingDate": "1997",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Handelsvägen 19",
+    "postalCode": "973 45",
+    "addressLocality": "Luleå",
+    "addressRegion": "Norrbotten",
+    "addressCountry": "SE"
+  },
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+46-920-280280",
+    "email": "info@profilbutiken.se",
+    "contactType": "sales",
+    "availableLanguage": ["sv", "en"],
+    "areaServed": ["SE", "NO", "FI", "DK"]
+  }],
+  "sameAs": [
+    "https://www.instagram.com/profilbutiken.se/",
+    "https://www.facebook.com/profilbutiken/",
+    "https://fulmossa.se/"
+  ]
+}
+</script>
+
+<script src="js/main.js?v=7"></script>
+</body>
+</html>

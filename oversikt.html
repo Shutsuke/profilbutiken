@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Översikt och flöde – Profilbutiken</title>
+<meta name="description" content="Alla skisser för Profilbutiken på en yta: adminpanelen, den publika sajten och var den befintliga webbshopen tar vid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/oversikt.css?v=4">
+<link rel="icon" href="assets/logo-pb.svg">
+</head>
+<body>
+
+<a class="skip" href="#canvas">Hoppa till ytan</a>
+
+<!-- ===== Verktygsfält ===== -->
+<header class="bar">
+  <div class="bar__left">
+    <a class="bar__back" href="index.html">&larr; Landningssidan</a>
+    <span class="bar__title">Översikt &amp; flöde</span>
+    <span class="bar__note">Skiss – inte Profilbutikens riktiga sajt</span>
+  </div>
+  <div class="bar__right">
+    <div class="zoom" role="group" aria-label="Zoom">
+      <button type="button" id="zoomOut" aria-label="Zooma ut">&minus;</button>
+      <output id="zoomLevel">100&nbsp;%</output>
+      <button type="button" id="zoomIn" aria-label="Zooma in">+</button>
+    </div>
+    <button type="button" class="bar__btn" id="fitAll">Visa allt</button>
+    <button type="button" class="bar__btn bar__btn--ghost" id="togglePanel" aria-expanded="true" aria-controls="panel">Sidlista</button>
+  </div>
+</header>
+
+<!-- ===== Sidlista ===== -->
+<nav class="panel" id="panel" aria-label="Alla skisser">
+  <section>
+    <h2>Adminpanel</h2>
+    <p class="panel__hint">Det kunden själva redigerar. Webbshopen har sin egen admin – den rörs inte.</p>
+    <button type="button" data-goto="f-a1"><span>A1</span>Översikt</button>
+    <button type="button" data-goto="f-a2"><span>A2</span>Redigera startsidan</button>
+    <button type="button" data-goto="f-a3"><span>A3</span>Teamet</button>
+    <button type="button" data-goto="f-a4"><span>A4</span>Kampanjer</button>
+    <button type="button" data-goto="f-a5"><span>A5</span>Media &amp; logotyper</button>
+    <button type="button" data-goto="f-a6"><span>A6</span>Inkorg</button>
+  </section>
+  <section>
+    <h2>Publika sajten</h2>
+    <p class="panel__hint">Alla sex är byggda i html. Ramarna nedan visar sidorna live – klicka ”Öppna” för att gå till dem.</p>
+    <button type="button" data-goto="f-b1"><span>01</span>Landningssida <em>html</em></button>
+    <button type="button" data-goto="f-b2"><span>B2</span>Start &amp; PRO <em>html</em></button>
+    <button type="button" data-goto="f-b3"><span>B3</span>Om oss <em>html</em></button>
+    <button type="button" data-goto="f-b4"><span>B4</span>Fulmössan <em>html</em></button>
+    <button type="button" data-goto="f-b5"><span>B5</span>Kontakt <em>html</em></button>
+    <button type="button" data-goto="f-b6"><span>B6</span>Villkor <em>html</em></button>
+  </section>
+  <section>
+    <h2>Befintlig plattform</h2>
+    <p class="panel__hint">Byggs inte om. Här tar deras CakePHP-shop vid.</p>
+    <button type="button" data-goto="f-c1"><span>02</span>Webbshopen</button>
+    <button type="button" data-goto="f-c2"><span>03</span>Designverktyget</button>
+    <button type="button" data-goto="f-c3"><span>04</span>Korrektur &amp; order</button>
+  </section>
+  <section class="panel__legend">
+    <h2>Flödet</h2>
+    <p><span class="key key--flow"></span>Kundens väg, steg 01–04</p>
+    <p><span class="key key--pub"></span>Admin publicerar till sajten</p>
+    <p><span class="key key--in"></span>Formulär landar i inkorgen</p>
+    <p class="panel__hint">Dra för att panorera. Scrolla eller använd +/− för att zooma. Klicka på en ram för att zooma in på den. Esc visar allt.</p>
+  </section>
+</nav>
+
+<!-- ===== Ytan ===== -->
+<div class="stage" id="stage">
+  <div class="canvas" id="canvas">
+
+    <!-- Kopplingar -->
+    <svg class="wires" width="3200" height="2360" viewBox="0 0 3200 2360" aria-hidden="true">
+      <defs>
+        <marker id="ar-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 10 5 0 10z" fill="#D35D79"/>
+        </marker>
+        <marker id="ar-pub" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 10 5 0 10z" fill="#1F7A6B"/>
+        </marker>
+        <marker id="ar-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 10 5 0 10z" fill="#8A6A00"/>
+        </marker>
+      </defs>
+
+      <!-- Admin publicerar till landningssidan -->
+      <path class="wire wire--pub" d="M560 600 V 690 H 220 V 752" marker-end="url(#ar-pub)"/>
+      <text class="wire__lbl wire__lbl--pub" x="572" y="664">publicerar till</text>
+
+      <!-- Landningssidan ut i undersidorna via menyn -->
+      <path class="wire wire--flow" d="M440 1010 H 512" marker-end="url(#ar-flow)"/>
+      <text class="wire__lbl wire__lbl--flow" x="448" y="996">menyn</text>
+
+      <!-- Kundens väg ner i shoppen -->
+      <path class="wire wire--flow" d="M220 1660 V 1792" marker-end="url(#ar-flow)"/>
+      <text class="wire__lbl wire__lbl--flow" x="236" y="1735">Prova loggan / Till webbshopen</text>
+      <path class="wire wire--flow" d="M440 2000 H 512" marker-end="url(#ar-flow)"/>
+      <path class="wire wire--flow" d="M960 2000 H 1032" marker-end="url(#ar-flow)"/>
+
+      <!-- Kontaktformulär in i inkorgen -->
+      <path class="wire wire--in" d="M2300 752 V 680 H 2820 V 608" marker-end="url(#ar-in)"/>
+      <text class="wire__lbl wire__lbl--in" x="2410" y="668">formulär landar här</text>
+    </svg>
+
+    <!-- Lanetiketter -->
+    <div class="lane" style="left:0;top:-78px;width:3040px"><span>Adminpanel</span> – det kunden redigerar själva</div>
+    <div class="lane" style="left:0;top:698px;width:3040px"><span>Publika sajten</span> – alla sex sidorna är byggda i html</div>
+    <div class="lane lane--dim" style="left:0;top:1738px;width:1480px"><span>Befintlig plattform</span> – byggs inte om</div>
+
+    <!-- ============ LANE A: ADMINPANEL ============ -->
+
+    <article class="frame" id="f-a1" tabindex="0" style="left:0;top:0;width:440px;height:600px">
+      <header class="frame__tab"><b>A1</b> Admin · Översikt</header>
+      <div class="frame__body">
+        <div class="ad">
+          <aside class="ad__side">
+            <div class="ad__brand">Profilbutiken<span>Admin</span></div>
+            <i class="is-on">Översikt</i><i>Redigera startsidan</i><i>Teamet</i><i>Kampanjer</i><i>Media</i><i>Inkorg <b>4</b></i>
+            <div class="ad__foot">Visa sajten ↗</div>
+          </aside>
+          <div class="ad__main">
+            <div class="ad__head"><h3>Översikt</h3><span class="ad__btn">Publicera</span></div>
+            <div class="ad__tiles">
+              <div><em>Nya förfrågningar</em><strong>4</strong><small>senaste 7 dagarna</small></div>
+              <div><em>Sidan uppdaterad</em><strong>igår</strong><small>av er</small></div>
+              <div><em>Aktiv kampanj</em><strong>1</strong><small>t.o.m. 16 nov</small></div>
+            </div>
+            <div class="ad__panel">
+              <h4>Senaste förfrågningar <span class="ad__fake">exempeldata</span></h4>
+              <table>
+                <tr><th>Datum</th><th>Företag</th><th>Ärende</th></tr>
+                <tr><td>19 okt</td><td>Exempel 1</td><td>Egen webbshop – PRO</td></tr>
+                <tr><td>18 okt</td><td>Exempel 2</td><td>Mässa eller event</td></tr>
+                <tr><td>17 okt</td><td>Exempel 3</td><td>En engångsbeställning</td></tr>
+              </table>
+            </div>
+            <div class="ad__panel">
+              <h4>Snabbredigering</h4>
+              <div class="ad__f"><label>Rubrik på startsidan</label><span class="ad__inp">Se din logga på tiotusen saker.</span></div>
+              <div class="ad__f"><label>Växel</label><span class="ad__inp">0920-280 280</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="frame" id="f-a2" tabindex="0" style="left:520px;top:0;width:440px;height:600px">
+      <header class="frame__tab"><b>A2</b> Admin · Redigera startsidan</header>
+      <div class="frame__body">
+        <div class="ad">
+          <aside class="ad__side">
+            <div class="ad__brand">Profilbutiken<span>Admin</span></div>
+            <i>Översikt</i><i class="is-on">Redigera startsidan</i><i>Teamet</i><i>Kampanjer</i><i>Media</i><i>Inkorg <b>4</b></i>
+          </aside>
+          <div class="ad__main">
+            <div class="ad__head"><h3>Redigera startsidan</h3><span class="ad__btn">Publicera</span></div>
+            <p class="ad__lead">En sektion per block på sajten. Allt kan stängas av utan att något går sönder.</p>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Hero</b><small>rubrik, ingress, två knappar, tre bockrader</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Provtryckaren</b><small>vilka tre produkter, tryckytor, exempelloggor</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Siffror</b><small>1997 · 10 000 · 2014 · 20 – fyra par av tal och text</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Så går det till</b><small>fyra steg, rubrik och beskrivning</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Sortiment</b><small>åtta kategorikort med länk in i shoppen</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Start &amp; PRO</b><small>två funktionslistor, fri ordning</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Fulmössan</b><small>text, fyra specar, bild, två knappar</small></div>
+            <div class="ad__sect"><span class="ad__tog"></span><b>Kundlogotyper</b><small>avstängd tills ni valt kunder som får nämnas</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Om oss &amp; team</b><small>hämtar från Teamet</small></div>
+            <div class="ad__sect"><span class="ad__tog is-on"></span><b>Kontakt</b><small>växel, mejl, adress, formulärfält</small></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="frame" id="f-a3" tabindex="0" style="left:1040px;top:0;width:440px;height:600px">
+      <header class="frame__tab"><b>A3</b> Admin · Teamet</header>
+      <div class="frame__body">
+        <div class="ad">
+          <aside class="ad__side">
+            <div class="ad__brand">Profilbutiken<span>Admin</span></div>
+            <i>Översikt</i><i>Redigera startsidan</i><i class="is-on">Teamet</i><i>Kampanjer</i><i>Media</i><i>Inkorg <b>4</b></i>
+          </aside>
+          <div class="ad__main">
+            <div class="ad__head"><h3>Teamet</h3><span class="ad__btn">Lägg till</span></div>
+            <p class="ad__lead">Dra för att ändra ordning. Syns på startsidan och på Kontakt.</p>
+            <table class="ad__tbl">
+              <tr><th></th><th>Namn</th><th>Roll</th><th>Direkt</th></tr>
+              <tr><td>⠿</td><td>Caroline Wallgren</td><td>VD</td><td>072-450 79 27</td></tr>
+              <tr><td>⠿</td><td>Matts Fåhraeus</td><td>Projektledare</td><td>070-516 90 86</td></tr>
+              <tr><td>⠿</td><td>Jörgen Johansson</td><td>Projektledare</td><td>070-658 02 84</td></tr>
+              <tr><td>⠿</td><td>Mats Johnson</td><td>Projektledare</td><td>070-555 91 11</td></tr>
+              <tr><td>⠿</td><td>Tomas Taavo</td><td>Projektledare</td><td>070-622 40 93</td></tr>
+              <tr><td>⠿</td><td>Jörgen Lindh</td><td>Designer</td><td>0920-280 295</td></tr>
+              <tr><td>⠿</td><td>Viggo Rasch</td><td>Lager &amp; logistik</td><td>0920-280 279</td></tr>
+            </table>
+            <div class="ad__panel">
+              <h4>Viggo Rasch</h4>
+              <div class="ad__f"><label>Roll</label><span class="ad__inp">Lager &amp; logistik</span></div>
+              <div class="ad__f"><label>E-post</label><span class="ad__inp">viggo@profilbutiken.se</span></div>
+              <div class="ad__f"><label>Porträtt</label><span class="ad__inp ad__inp--up">Ladda upp bild</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="frame" id="f-a4" tabindex="0" style="left:1560px;top:0;width:440px;height:600px">
+      <header class="frame__tab"><b>A4</b> Admin · Kampanjer</header>
+      <div class="frame__body">
+        <div class="ad">
+          <aside class="ad__side">
+            <div class="ad__brand">Profilbutiken<span>Admin</span></div>
+            <i>Översikt</i><i>Redigera startsidan</i><i>Teamet</i><i class="is-on">Kampanjer</i><i>Media</i><i>Inkorg <b>4</b></i>
+          </aside>
+          <div class="ad__main">
+            <div class="ad__head"><h3>Kampanjer</h3><span class="ad__btn">Ny kampanj</span></div>
+            <p class="ad__lead">Styr bara vad som <em>lyfts fram</em> på säljsidan. Priserna i sig ligger kvar i webbshopen.</p>
+            <table class="ad__tbl">
+              <tr><th>Produkt</th><th>Rabatt</th><th>T.o.m.</th><th>Aktiv</th></tr>
+              <tr><td>Fulmössa</td><td>−10 %</td><td>16 nov 2026</td><td><span class="ad__tog ad__tog--s is-on"></span></td></tr>
+              <tr><td>Julklappar till anställda</td><td>—</td><td>20 dec 2026</td><td><span class="ad__tog ad__tog--s"></span></td></tr>
+              <tr><td>Mässpaket</td><td>—</td><td>—</td><td><span class="ad__tog ad__tog--s"></span></td></tr>
+            </table>
+            <div class="ad__panel">
+              <h4>Fulmössa</h4>
+              <div class="ad__f"><label>Rubrik på sajten</label><span class="ad__inp">Fulmössan.</span></div>
+              <div class="ad__f"><label>Pris med tryck</label><span class="ad__inp">från 86 kr/st exkl. moms, minst 15 st</span></div>
+              <div class="ad__f"><label>Pris utan tryck</label><span class="ad__inp">199 kr inkl. moms på fulmossa.se</span></div>
+              <div class="ad__f"><label>Visas i</label><span class="ad__inp">Fulmössan-sektionen</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="frame" id="f-a5" tabindex="0" style="left:2080px;top:0;width:440px;height:600px">
+      <header class="frame__tab"><b>A5</b> Admin · Media &amp; logotyper</header>
+      <div class="frame__body">
+        <div class="ad">
+          <aside class="ad__side">
+            <div class="ad__brand">Profilbutiken<span>Admin</span></div>
+            <i>Översikt</i><i>Redigera startsidan</i><i>Teamet</i><i>Kampanjer</i><i class="is-on">Media</i><i>Inkorg <b>4</b></i>
+          </aside>
+          <div class="ad__main">
+            <div class="ad__head"><h3>Media &amp; logotyper</h3><span class="ad__btn">Ladda upp</span></div>
+            <h4 class="ad__h4">Produktbilder i Provtryckaren</h4>
+            <div class="ad__media">
+              <figure><img src="assets/vast.jpg" alt="Väst"><figcaption>vast.jpg</figcaption></figure>
+              <figure><img src="assets/fulmossa.jpg" alt="Fulmössa"><figcaption>fulmossa.jpg</figcaption></figure>
+              <figure><img src="assets/mugg.jpg" alt="Vikkåsa"><figcaption>mugg.jpg</figcaption></figure>
+              <figure><img src="assets/penna.jpg" alt="Penna"><figcaption>penna.jpg</figcaption></figure>
+            </div>
+            <h4 class="ad__h4">Tryckyta per produkt</h4>
+            <div class="ad__f"><label>Väst – placering</label><span class="ad__inp">Rygg, mitt · 24 % bredd</span></div>
+            <p class="ad__note">Ögonmått idag. Byts mot riktiga tryckmått om de kan exporteras ur plattformen.</p>
+            <h4 class="ad__h4">Kundlogotyper <span class="ad__fake">tom</span></h4>
+            <p class="ad__note">Inga kundnamn är beslutade än. Sektionen på sajten är avstängd.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="frame" id="f-a6" tabindex="0" style="left:2600px;top:0;width:440px;height:600px">
+      <header class="frame__tab"><b>A6</b> Admin · Inkorg</header>
+      <div class="frame__body">
+        <div class="ad">
+          <aside class="ad__side">
+            <div class="ad__brand">Profilbutiken<span>Admin</span></div>
+            <i>Översikt</i><i>Redigera startsidan</i><i>Teamet</i><i>Kampanjer</i><i>Media</i><i class="is-on">Inkorg <b>4</b></i>
+          </aside>
+          <div class="ad__main">
+            <div class="ad__head"><h3>Inkorg</h3><span class="ad__fake">exempeldata</span></div>
+            <p class="ad__lead">Fältet ”Vad gäller det?” avgör vem som får mejlet.</p>
+            <table class="ad__tbl">
+              <tr><th>Datum</th><th>Ärende</th><th>Går till</th></tr>
+              <tr class="is-new"><td>19 okt</td><td>Egen webbshop – PRO</td><td>Matts</td></tr>
+              <tr class="is-new"><td>19 okt</td><td>Mässa eller event</td><td>Tomas</td></tr>
+              <tr class="is-new"><td>18 okt</td><td>Hjälp med logotypfil</td><td>Jörgen L</td></tr>
+              <tr class="is-new"><td>18 okt</td><td>En engångsbeställning</td><td>Växeln</td></tr>
+              <tr><td>16 okt</td><td>Egen webbshop – Start</td><td>Mats</td></tr>
+              <tr><td>15 okt</td><td>Annat</td><td>Växeln</td></tr>
+            </table>
+            <div class="ad__panel">
+              <h4>Egen webbshop – PRO</h4>
+              <div class="ad__f"><label>Företag</label><span class="ad__inp">Exempel 1 AB</span></div>
+              <div class="ad__f"><label>Kontakt</label><span class="ad__inp">namn@exempel.se · 070-000 00 00</span></div>
+              <div class="ad__f"><label>Meddelande</label><span class="ad__inp ad__inp--tall">Vi har fyra kontor och vill kunna styra vilka färger varje kontor ser.</span></div>
+              <div class="ad__row"><span class="ad__btn">Svara</span><span class="ad__btn ad__btn--ghost">Tilldela</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ LANE B: PUBLIKA SAJTEN ============ -->
+
+    <article class="frame frame--live" id="f-b1" tabindex="0" style="left:0;top:760px;width:440px;height:900px">
+      <header class="frame__tab"><b class="is-step">01</b> Landningssida <em>byggd i html</em>
+        <a class="frame__open" href="index.html">Öppna ↗</a>
+      </header>
+      <div class="frame__body">
+        <div class="live"><iframe src="index.html" title="Landningssidan, förhandsvisning" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      </div>
+    </article>
+
+    <article class="frame frame--live" id="f-b2" tabindex="0" style="left:520px;top:760px;width:440px;height:600px">
+      <header class="frame__tab"><b>B2</b> Start &amp; PRO <em>byggd i html</em>
+        <a class="frame__open" href="start-pro.html">Öppna ↗</a>
+      </header>
+      <div class="frame__body">
+        <div class="live"><iframe src="start-pro.html" title="Start &amp; PRO, förhandsvisning" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      </div>
+    </article>
+
+    <article class="frame frame--live" id="f-b3" tabindex="0" style="left:1040px;top:760px;width:440px;height:600px">
+      <header class="frame__tab"><b>B3</b> Om oss <em>byggd i html</em>
+        <a class="frame__open" href="om.html">Öppna ↗</a>
+      </header>
+      <div class="frame__body">
+        <div class="live"><iframe src="om.html" title="Om oss, förhandsvisning" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      </div>
+    </article>
+
+    <article class="frame frame--live" id="f-b4" tabindex="0" style="left:1560px;top:760px;width:440px;height:600px">
+      <header class="frame__tab"><b>B4</b> Fulmössan <em>byggd i html</em>
+        <a class="frame__open" href="fulmossan.html">Öppna ↗</a>
+      </header>
+      <div class="frame__body">
+        <div class="live"><iframe src="fulmossan.html" title="Fulmössan, förhandsvisning" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      </div>
+    </article>
+
+    <article class="frame frame--live" id="f-b5" tabindex="0" style="left:2080px;top:760px;width:440px;height:600px">
+      <header class="frame__tab"><b>B5</b> Kontakt <em>byggd i html</em>
+        <a class="frame__open" href="kontakt.html">Öppna ↗</a>
+      </header>
+      <div class="frame__body">
+        <div class="live"><iframe src="kontakt.html" title="Kontakt, förhandsvisning" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      </div>
+    </article>
+
+    <article class="frame frame--live" id="f-b6" tabindex="0" style="left:2600px;top:760px;width:440px;height:600px">
+      <header class="frame__tab"><b>B6</b> Villkor <em>byggd i html</em>
+        <a class="frame__open" href="villkor.html">Öppna ↗</a>
+      </header>
+      <div class="frame__body">
+        <div class="live"><iframe src="villkor.html" title="Köpvillkor, förhandsvisning" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      </div>
+    </article>
+
+    <!-- ============ LANE C: BEFINTLIG PLATTFORM ============ -->
+
+    <article class="frame frame--dim" id="f-c1" tabindex="0" style="left:0;top:1800px;width:440px;height:400px">
+      <header class="frame__tab"><b class="is-step">02</b> Webbshopen <em>finns redan</em></header>
+      <div class="frame__body">
+        <div class="pg pg--dim">
+          <div class="pg__nav"><span class="pg__logo"></span><i></i><i></i><i></i><i></i></div>
+          <div class="pg__shop"><aside></aside><div><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <p class="pg__cap">Drygt 10 000 produkter, ~70 kategorier, prisfilter</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="frame frame--dim" id="f-c2" tabindex="0" style="left:520px;top:1800px;width:440px;height:400px">
+      <header class="frame__tab"><b class="is-step">03</b> Designverktyget <em>finns redan</em></header>
+      <div class="frame__body">
+        <div class="pg pg--dim">
+          <div class="pg__nav"><span class="pg__logo"></span><i></i><i></i><i></i><i></i></div>
+          <div class="pg__split"><div class="pg__box"></div><div><u></u><u></u><u></u><u></u></div></div>
+          <p class="pg__cap">Logobibliotek, byt logga, ändra storlek, flytta, vrid</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="frame frame--dim" id="f-c3" tabindex="0" style="left:1040px;top:1800px;width:440px;height:400px">
+      <header class="frame__tab"><b class="is-step">04</b> Korrektur &amp; order <em>finns redan</em></header>
+      <div class="frame__body">
+        <div class="pg pg--dim">
+          <div class="pg__nav"><span class="pg__logo"></span><i></i><i></i><i></i><i></i></div>
+          <div class="pg__rows"><div><b>Korrektur</b><small>kunden godkänner själv</small></div><div><b>Pris</b><small>uppdateras efter tryckytor</small></div><div><b>Order</b><small>inköpshistorik, repeatbeställning</small></div></div>
+          <p class="pg__cap">Hela vägen klar på några minuter</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<script src="js/oversikt.js?v=3"></script>
+</body>
+</html>
